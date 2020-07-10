@@ -35,9 +35,11 @@ cities = []
 def cityreader(cities=[]):
   with open('cities.csv', newline='\n') as csvfile:
     urbs = csv.reader(csvfile, delimiter=',')
-    for row in urbs:
-      # cities.append(list(row)[0])
-      cities.append(City(list(row)[0], list(row)[3], list(row)[4]))
+    for row in list(urbs)[1:]:
+      first = list(row)[0]
+      second = float(list(row)[3])
+      third = float(list(row)[4])
+      cities.append(City(first, second, third))
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list , quotechar='|'
@@ -50,7 +52,7 @@ cityreader(cities)
 for c in cities:
     print(c)
 
-quit()
+# quit()
 
 # STRETCH GOAL!
 #
